@@ -1,0 +1,16 @@
+services:
+  typing-race-backend:
+    container_name: typing-race-backend
+    build: .
+    volumes:
+      - ./:/app
+    ports:
+      - 8080:8080
+    depends_on:
+      - rabbitmq
+  rabbitmq:
+    container_name: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    image: rabbitmq:3.10-management
